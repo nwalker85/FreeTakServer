@@ -191,7 +191,15 @@ class MainConfig:
         # radius of emergency within-which users will receive it
         "EmergencyRadius": {"default": 0, "type": int},
         # set the persistence path
-        "persistencePath": {"default": PERSISTENCE_PATH, "type": str}
+        "persistencePath": {"default": PERSISTENCE_PATH, "type": str},
+
+        # ----- OIDC / OAuth2 (optional) -----
+        # When OIDCIssuer is non-empty the REST API accepts OIDC-issued
+        # JWT bearer tokens in addition to legacy static API tokens.
+        "OIDCIssuer": {"default": "", "type": str},
+        "OIDCAudience": {"default": "", "type": str},
+        "OIDCRequiredScope": {"default": "", "type": str},
+        "OIDCUsernameClaim": {"default": "preferred_username", "type": str},
     }
 
     # This structure maps environmental vars to config vars
@@ -261,7 +269,12 @@ class MainConfig:
         # radius of emergency within-which users will receive it
         "FTS_EMERGENCY_RADIUS": "EmergencyRadius",
         "FTS_PERSISTENCE_PATH": "persistencePath",
-        "FTS_LOG_LEVEL": "LogLevel"
+        "FTS_LOG_LEVEL": "LogLevel",
+        # OIDC / OAuth2
+        "FTS_OIDC_ISSUER": "OIDCIssuer",
+        "FTS_OIDC_AUDIENCE": "OIDCAudience",
+        "FTS_OIDC_REQUIRED_SCOPE": "OIDCRequiredScope",
+        "FTS_OIDC_USERNAME_CLAIM": "OIDCUsernameClaim",
     }
 
     # This is a simple representation of the YAML config schema with
